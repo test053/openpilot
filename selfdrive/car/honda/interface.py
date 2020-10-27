@@ -256,8 +256,8 @@ class CarInterface(CarInterfaceBase):
         # stock request input values:     0x0000, 0x00DB, 0x01BB, 0x0296, 0x0377, 0x0454, 0x0532, 0x0610, 0x067F
         # stock request output values:    0x0000, 0x0500, 0x0A15, 0x0E6D, 0x1100, 0x1200, 0x129A, 0x134D, 0x1400
         # modified request output values: 0x0000, 0x0500, 0x0A15, 0x0E6D, 0x1100, 0x1200, 0x1ACD, 0x239A, 0x2800
-        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2560, 8000], [0, 2560, 3840]] #tuned by Titanminer (8000)
-        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.3], [0.1]]
+        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2560, 10000], [0, 2560, 3840]] #tuned by Titanminer (8000)
+        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.21], [0.07]]
       else:
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 3840], [0, 3840]]
         ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.64], [0.192]]
@@ -275,8 +275,9 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = ret.wheelbase * 0.41
       ret.steerRatio = 16.0  # 12.3 is spec end-to-end
       if eps_modified:
-        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2560, 10000], [0, 2560, 3840]] 
-        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.3], [0.1]]
+        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0x0, 0xB5, 0x161, 0x2D6, 0x4C0, 0x70D, 0xC42, 0x1058, 0x2C00], [0x0, 0x160, 0x1F0, 0x2E0, 0x378, 0x4A0, 0x5F0, 0x804, 0xF00]]																		 
+        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.21], [0.07]] #still needs to finish tuning for the new car
+        ret.lateralTuning.pid.kf = 0.00004
       else:
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 3840], [0, 3840]]
         ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.64], [0.192]]
