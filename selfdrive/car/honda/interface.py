@@ -186,8 +186,8 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = CivicParams.CENTER_TO_FRONT
       ret.steerRatio = 15.38  # 10.93 is end-to-end spec
       if eps_modified:
-        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2564, 8000], [0, 2564, 3840]] 
-        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.32], [0.1]] #2.5 default mod #TMG put your values here
+        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0x0, 0x380, 0x800, 0xC00, 0xEB6, 0x1C81, 0x3E84, 0x5C6E, 0x6C00], [0x0, 0xEC, 0x260, 0x424, 0x5F4, 0x7C8, 0xA04, 0xDF8, 0xF00]]	# python can read decimal or hex hehe =)								 
+        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.111111], [0.0333333]] #my mod <--- Tony's 4 step mod
       else:
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 4096], [0, 4096]]
         ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.8], [0.24]]
